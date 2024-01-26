@@ -42,6 +42,7 @@ namespace PeliculasAPI.Servicios
 
             var extension = Path.GetExtension(archivo.FileName);
             var nombreArchivo = $"{Guid.NewGuid()}{extension}";
+
             var blob = cliente.GetBlobClient(nombreArchivo);
             BlobHttpHeaders blobHttpHeaders = new BlobHttpHeaders();
             blobHttpHeaders.ContentType = archivo.ContentType;
