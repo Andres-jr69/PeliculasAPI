@@ -11,7 +11,8 @@ builder.Services.AddControllers()
     .AddNewtonsoftJson();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"), 
+            x => x.UseNetTopologySuite()));
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient<IAlmacenadorArchivos, AlmacenadorArchivosAzure>();

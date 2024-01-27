@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using PeliculasAPI.DTOs;
 using PeliculasAPI.Entidades;
+using NetTopologySuite.Geometries;
+
 
 namespace PeliculasAPI.Helpers
 {
@@ -14,6 +16,13 @@ namespace PeliculasAPI.Helpers
             //Primero quien lo recibe y despues hacia donde lo quieres mapear
             CreateMap<GeneroCreacionDTO, Genero>();
 
+            CreateMap<SalaDeCine, SalaDeCineDTO>()
+                .ForMember(x => x.Latitud, x => x.MapFrom(y => y.Ubicacion)) ;
+
+            CreateMap<SalaDeCineDTO, SalaDeCine>();
+
+            //Primero quien lo recibe y despues hacia donde lo quieres mapear
+            CreateMap<SalaDeCineCreacionDTO, SalaDeCine>();
 
             CreateMap<Actor, ActorTDO>().ReverseMap();
             CreateMap<ActorCreacionDTO, Actor>()
